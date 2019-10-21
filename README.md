@@ -37,3 +37,9 @@ El segundo paso es simplemente agregar las funciones y la linea especial para
 indicar que este programa es un programa de python (se llama shebang, y empieza
 con unos caracteres llamados "magicos": `#!`
 
+Paso 3
+------
+Implementamos `desplegar_bienvenida` y `generar_tablero`. Ademas, como decidi
+imprimir el tablero en la bienvenida, movi el orden de las llamadas en la funcion
+principal. Ademas cree una nueva funcion para desplegar el tablero.
+
