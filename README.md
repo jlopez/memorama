@@ -73,3 +73,16 @@ por un solo numero que no exceda un valor maximo, el cual tambien se le
 pasa a la funcion. Y `obten_coordenada_valida` que obtiene una coordenada
 que sea valida en el tablero (que el numero ahi sea positivo, lo cual significa
 que sigue tapado)
+
+Paso 7
+------
+Este es el paso final. Implementamos aplicar jugada. Esta funcion toma
+una jugada (que es una lista con dos coordenadas, las cuales son, a su vez
+dos numeros, solo usamos listas) y un tablero. Se asume que la jugada es
+valida. La funcion muestra el tablero con las cartas descubiertas, y si son
+iguales, las deja asi y regresa "True" indicando exito. De no ser asi, las
+vuelve a tapar.
+
+Algo que se empezo a volver comun es ver el valor en una coordenada. Agregue
+la funcion `valor_tablero(tablero, coordenada)` para obtener el valor. Y
+cambie el codigo existente a usarla en vez de hacerlo cada vez a mano.

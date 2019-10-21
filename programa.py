@@ -45,9 +45,9 @@ def mostrar_tablero(tablero):
 
     # Imprimir celdas
     i = 0
-    for c in range(1, ANCHO + 1):
-        print('%2d' % c, end=' ')
-        for r in range(1, ALTO + 1):
+    for r in range(1, ALTO + 1):
+        print('%2d' % r, end=' ')
+        for c in range(1, ANCHO + 1):
             valor = tablero[i]
             i = i + 1
 
@@ -57,7 +57,7 @@ def mostrar_tablero(tablero):
             if valor > 0:
                 print(' -', end=' ')
             else:
-                print('%2s' % -tablero[i], end=' ')
+                print('%2s' % -valor, end=' ')
         print()
 
 
@@ -140,7 +140,51 @@ def obten_numero_valido(tipo, numero, maximo):
     return valor
 
 def aplica_jugada(tablero, jugada):
-    pass
+    # Obtenemos la coordenada 1 y 2 de la jugada
+    coordenada1, coordenada2 = jugada
+
+    # Convertimos las coordenadas a indices y obtenemos
+    # los valores de ambas celdas
+    indice1 = indice_para_coordenada(coordenada1)
+    indice2 = indice_para_coordenada(coordenada2)
+    valor1 = tablero[indice1]
+    valor2 = tablero[indice2]
+
+    # Cambiamos los signos para mostrar los valores
+    tablero[indice1] = -valor1
+    tablero[indice2] = -valor2
+
+    # Desplegamos el tablero modificado
+    print()
+    print("Este es el tablero despues de aplicar la jugada")
+    mostrar_tablero(tablero)
+
+    # La jugada fue exitosa si los dos valores eran iguales
+    # Aqui dice: crea una variable llamada exito, y dale el
+    # valor de la comparacion entre valor1 y valor2.
+    # Si son iguales, sera True, pero si son diferentes,
+    # sera False
+    exito = valor1 == valor2
+
+    # Si la jugada no fue exitosa, volvemos a reestablecer
+    # los valores (positivos) para "ocultarlos" de nuevo
+    if not exito:
+        tablero[indice1] = valor1
+        tablero[indice2] = valor2
+
+    # Finalmente regresamos el valor de la variable exito
+    # para que la funcion principal decida si cambiar de
+    # turno
+    return exito
+
+
+def indice_para_coordenada(coordenada):
+    # Obten el valor del renglon y la columna de la coordenada
+    renglon, columna = coordenada
+    # Convierte las coordenadas a un indice dentro del tablero
+    # Tenemos que restar uno a las variables porque usamos como
+    # origen la posicion 1, 1
+    return (renglon - 1) * ANCHO + (columna - 1)
 
 
 def juego():
@@ -165,5 +209,8 @@ def juego():
         # cambia al otro jugador
         if not exito:
             jugador = 2 if jugador == 1 else 1
+        else:
+            print("Correcto! El jugador %s puede continuar jugando" % jugador)
+            print()
 
 juego()
