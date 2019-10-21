@@ -39,15 +39,15 @@ def generar_tablero():
 def mostrar_tablero(tablero):
     # Imprimir encabezado de columnas
     print('  ', end=' ')
-    for c in range(ANCHO):
+    for c in range(1, ANCHO + 1):
         print('%2d' % c, end = ' ')
     print()
 
     # Imprimir celdas
     i = 0
-    for c in range(ANCHO):
+    for c in range(1, ANCHO + 1):
         print('%2d' % c, end=' ')
-        for r in range(ALTO):
+        for r in range(1, ALTO + 1):
             valor = tablero[i]
             i = i + 1
 
@@ -86,7 +86,58 @@ def anuncia_jugador(jugador):
 
 
 def obten_jugada_valida(tablero):
-    pass
+    coordenada1 = obten_coordenada_valida(1, tablero)
+    # Pedimos la coordenada 2 hasta que nos den una diferente
+    while True:
+        coordenada2 = obten_coordenada_valida(2, tablero)
+        if coordenada1 == coordenada2:
+            print("La segunda coordenada no puede ser igual a la primera")
+            print("Intente de nuevo...")
+        else:
+            break
+    return [coordenada1, coordenada2]
+
+
+def obten_coordenada_valida(numero, tablero):
+    # Repite el codigo hasta que lo logremos
+    while True:
+        # Obtenemos el renglon y la columna
+        renglon = obten_numero_valido('el renglon', numero, ALTO)
+        columna = obten_numero_valido('la columna', numero, ANCHO)
+
+        # Vemos si el valor en esa celda es positivo.
+        # Si lo es, lo logramos (break), de lo contrario
+        # seguimos preguntando
+        i = renglon * ANCHO + renglon
+        valor = tablero[i]
+        if valor > 0:
+            # Exito, el valor es positivo, podemos salir del while
+            break
+        else:
+            # El valor es negativo, pedimos de nuevo
+            print("La coordenada (%s, %s) es invalida. Intenta de nuevo..." %
+                  (renglon, columna))
+
+    # Regresa la coordenada usando una lista de dos valores
+    return [renglon, columna]
+
+
+def obten_numero_valido(tipo, numero, maximo):
+    # Repite el codigo hasta que lo logremos
+    while True:
+        # Pedimos un valor
+        mensaje = 'Dame %s de tu jugada #%d (1-%d): ' % (tipo, numero, maximo)
+        valor = int(input(mensaje))
+
+        # Si el valor no esta entre 1 y maximo, pedimos de nuevo
+        if valor <= 0 or valor > maximo:
+            print("Desafortunadamente %s es invalido. Intenta de nuevo..." % tipo)
+        else:
+            # El valor fue correcto, salimos del while
+            break
+
+    # Regresamos el valor que dio el usuario
+    return valor
 
 def aplica_jugada(tablero, jugada):
     pass

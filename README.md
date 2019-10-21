@@ -64,3 +64,12 @@ Paso 5
 Implementamos `anuncia_jugador`. Este simplemente imprime el jugador
 usando '%s' para insertar el valor de la variable jugador dentro de la
 cadena.
+
+Paso 6
+------
+Solo dos funciones mas que implementar. Hacemos `obten_jugada_valida`.
+Agregamos un par de funciones mas `obten_numero_valido`, la cual pregunta
+por un solo numero que no exceda un valor maximo, el cual tambien se le
+pasa a la funcion. Y `obten_coordenada_valida` que obtiene una coordenada
+que sea valida en el tablero (que el numero ahi sea positivo, lo cual significa
+que sigue tapado)
