@@ -43,3 +43,18 @@ Implementamos `desplegar_bienvenida` y `generar_tablero`. Ademas, como decidi
 imprimir el tablero en la bienvenida, movi el orden de las llamadas en la funcion
 principal. Ademas cree una nueva funcion para desplegar el tablero.
 
+Paso 4
+------
+Implementamos `tablero_completado`
+El tablero esta completado si TODAS las celdas
+son negativas - quiere decir que todas las celdas
+han sido reveladas.
+La funcion all() toma una lista, la cual la creamos
+aqui, en el momento, usando un codigo llamado
+"list comprehension". La parte:
+
+    celda < 0 for celda in tablero
+
+define una lista creada con valores True/False, un valor
+por cada celda en el tablero. True si la celda es negativa,
+False si es positiva.

@@ -51,15 +51,31 @@ def mostrar_tablero(tablero):
             valor = tablero[i]
             i = i + 1
 
+            # Si la celda tiene un numero positivo quiere decir
+            # que aun no ha sido revelado. Si es negativo quiere
+            # decir que ya lo fue
             if valor > 0:
                 print(' -', end=' ')
             else:
-                print('%2s' % tablero[i], end=' ')
+                print('%2s' % -tablero[i], end=' ')
         print()
 
 
-def tablero_completado():
-    pass
+def tablero_completado(tablero):
+    # El tablero esta completado si TODAS las celdas
+    # son negativas - quiere decir que todas las celdas
+    # han sido reveladas.
+    # La funcion all() toma una lista, la cual la creamos
+    # aqui, en el momento, usando un codigo llamado
+    # "list comprehension". La parte:
+    #
+    #    celda < 0 for celda in tablero
+    #
+    # define una lista creada con valores True/False, un valor
+    # por cada celda en el tablero. True si la celda es negativa,
+    # False si es positiva.
+    return all(celda < 0 for celda in tablero)
+
 
 def anuncia_jugador(jugador):
     pass
@@ -79,7 +95,7 @@ def juego():
     jugador = 1
 
     # Ciclo principal
-    while not tablero_completado():
+    while not tablero_completado(tablero):
         # Anuncia jugador si cambio
         if jugador_previo != jugador:
             anuncia_jugador(jugador)
