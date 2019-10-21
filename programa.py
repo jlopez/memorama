@@ -78,7 +78,12 @@ def tablero_completado(tablero):
 
 
 def anuncia_jugador(jugador):
-    pass
+    print()
+    print()
+    print("------------------------------------")
+    print("Es el turno del jugador %s" % jugador)
+    print("------------------------------------")
+
 
 def obten_jugada_valida(tablero):
     pass

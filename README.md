@@ -58,3 +58,9 @@ aqui, en el momento, usando un codigo llamado
 define una lista creada con valores True/False, un valor
 por cada celda en el tablero. True si la celda es negativa,
 False si es positiva.
+
+Paso 5
+------
+Implementamos `anuncia_jugador`. Este simplemente imprime el jugador
+usando '%s' para insertar el valor de la variable jugador dentro de la
+cadena.
