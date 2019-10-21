@@ -30,3 +30,10 @@ y lo que regresa.
 
 Ahora revisa el programa.py para que veas este primer paso y trata de encontrar
 ejemplos de lo que mencione arriba.
+
+Paso 2
+------
+El segundo paso es simplemente agregar las funciones y la linea especial para
+indicar que este programa es un programa de python (se llama shebang, y empieza
+con unos caracteres llamados "magicos": `#!`
+
